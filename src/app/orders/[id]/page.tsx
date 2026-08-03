@@ -4,6 +4,8 @@ import { prisma } from "@/lib/prisma";
 import { redirect, notFound } from "next/navigation";
 import { CheckCircle2, Circle } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 const STEPS = ["CONFIRMED", "PROCESSING", "SHIPPED", "DELIVERED"];
 
 export default async function OrderDetailPage({

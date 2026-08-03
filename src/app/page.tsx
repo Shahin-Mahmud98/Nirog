@@ -4,6 +4,8 @@ import { prisma } from "@/lib/prisma";
 import ProductCard from "@/components/ProductCard";
 import { getCategoryIcon } from "@/lib/icons";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const [products, categories] = await Promise.all([
     prisma.product.findMany({

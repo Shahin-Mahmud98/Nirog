@@ -4,6 +4,8 @@ import Link from "next/link";
 import AddToCartPanel from "@/components/AddToCartPanel";
 import { getCategoryIcon } from "@/lib/icons";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProductDetailPage({ params }: { params: { slug: string } }) {
   const product = await prisma.product.findUnique({
     where: { slug: params.slug },

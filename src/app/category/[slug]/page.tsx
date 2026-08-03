@@ -4,6 +4,8 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { getCategoryIcon } from "@/lib/icons";
 
+export const dynamic = "force-dynamic";
+
 export default async function CategoryPage({ params }: { params: { slug: string } }) {
   const category = await prisma.category.findUnique({
     where: { slug: params.slug },
