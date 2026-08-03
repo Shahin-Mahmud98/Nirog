@@ -69,7 +69,7 @@ export default async function HomePage() {
       <section className="max-w-6xl mx-auto px-6 pb-14">
         <h2 className="text-2xl font-semibold mb-5">All you need</h2>
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
-          {categories.map((cat) => {
+          {categories.map((cat: { id: string; slug: string; name: string; icon: string | null; bannerColor: string | null }) => {
             const Icon = getCategoryIcon(cat.icon);
             const color = cat.bannerColor ?? "#0C5C4C";
             return (
@@ -97,7 +97,7 @@ export default async function HomePage() {
           <Link href="/products" className="text-sm font-medium text-teal-deep">View all</Link>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {products.map((p) => (
+          {products.map((p: { id: string }) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>

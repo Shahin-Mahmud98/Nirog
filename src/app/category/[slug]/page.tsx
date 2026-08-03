@@ -19,7 +19,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
   // Products belonging directly to this category, plus (for a parent category
   // with no products of its own) products from all of its subcategories.
   const categoryIds = category.children.length > 0
-    ? [category.id, ...category.children.map((c) => c.id)]
+    ? [category.id, ...category.children.map((c: { id: string }) => c.id)]
     : [category.id];
 
   const products = await prisma.product.findMany({
@@ -63,7 +63,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
               All {category.name}
             </Link>
           )}
-          {siblingNav.map((c) => (
+          {siblingNav.map((c: { id: string; slug: string; name: string }) => (
             <Link
               key={c.id}
               href={`/category/${c.slug}`}
@@ -83,7 +83,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
           <div className="text-center py-16 text-inksoft">No products in this category yet.</div>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {products.map((p) => (
+            {products.map((p: { id: string }) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>

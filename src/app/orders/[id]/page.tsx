@@ -74,7 +74,7 @@ export default async function OrderDetailPage({
       <div className="bg-white border border-line rounded-xl2 p-5 mb-4">
         <h3 className="font-semibold mb-3 text-sm">Items</h3>
         <div className="space-y-2">
-          {order.items.map((item) => (
+          {order.items.map((item: { id: string; name: string; qty: number; price: number }) => (
             <div key={item.id} className="flex justify-between text-sm">
               <span className="text-inksoft">{item.name} × {item.qty}</span>
               <span className="font-mono">৳{item.price * item.qty}</span>

@@ -30,7 +30,7 @@ export default async function OrdersPage() {
         <p className="text-inksoft text-sm">You haven't placed any orders yet.</p>
       ) : (
         <div className="space-y-4">
-          {orders.map((order) => (
+          {orders.map((order: { id: string; orderNumber: string; status: string; items: Array<{ id: string }>; total: number; createdAt: Date }) => (
             <Link
               key={order.id}
               href={`/orders/${order.id}`}

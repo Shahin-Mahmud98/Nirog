@@ -36,7 +36,7 @@ export async function POST(req: Request) {
 
   // Guard against a cart that includes a prescription-only product
   // without an approved prescription attached to the order.
-  const needsRx = products.some((p) => p.requiresPrescription);
+  const needsRx = products.some((p: { requiresPrescription: boolean }) => p.requiresPrescription);
   if (needsRx) {
     if (!prescriptionId) {
       return NextResponse.json(
@@ -58,7 +58,7 @@ export async function POST(req: Request) {
 
   let subtotal = 0;
   const orderItemsData = items.map((i) => {
-    const product = products.find((p) => p.id === i.productId);
+    const product = products.find((p: { id: string }) => p.id === i.productId);
     if (!product) throw new Error("Product not found");
     subtotal += product.price * i.qty;
     return {
