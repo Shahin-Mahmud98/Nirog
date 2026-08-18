@@ -4,6 +4,7 @@ import { authOptions } from "@/lib/auth";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 
+
 /**
  * Handles prescription image/PDF uploads. Out of the box this writes to
  * /public/uploads on local disk, which is fine for development but not for
